@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap');
+
+html{
+    scroll-behavior:smooth
+}
+
+figure.api-image img {
+    border: 1px solid #cccccc;
+    opacity:0;
+    animation:load_up 2s forwards;
+    -webkit-animation:load_up 2s forwards;
+}
+
+img.add-border {
+    border: 1px solid #cccccc;
+}
+
+@keyframes load_up{
+    from{opacity:0}
+    to{opacity:1}
+
+}@-webkit-keyframes load_up{
+    from{opacity:0}
+    to{opacity:1}
+}
+
+.header-image-preload {
+    padding-bottom: 100vh;
+}
+
+.hljs {
+    background: #fffff8 !important;
+}
+
+.no-top-padding {
+    padding-top: 0;
+}
+
+.chart-container {
+    position: relative;
+    min-height: 40vh;
+}
+
+.terminal {
+    width: 54.4%;
+    border: 1px solid #ccc;
+    filter: brightness(95%);
+    display: flex;
+    margin-bottom: 1%;
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: white;
+    font-size: 1em;
+}
+
+#terminal_content {
+    outline: none;
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    border: none;
+    padding: 0;
+    width: 100%;
+    font-size: 1rem;
+}
+
+@media (max-width: 760px) {
+    .terminal {
+        width: 99%;
+    }
+
+}
+
+#search_button {
+	color: #ccc;
+	border: none;
+	padding: 0;
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+	cursor: pointer;
+	outline: inherit;
+    width: 20px;
+    background-color: white;
+}
+
+.mcm_search_icon {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOm5vbmU7c3Ryb2tlOiM2NjY7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLXdpZHRoOjEuNXB4O308L3N0eWxlPjwvZGVmcz48bGluZSBjbGFzcz0iY2xzLTEiIHgxPSIxNC43MyIgeTE9IjE0LjY5IiB4Mj0iMTkuMTIiIHkyPSIxOS4wOCIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTguNDIsMTUuNTVBNy4xMyw3LjEzLDAsMSwwLDEuMjksOC40Miw3LjEzLDcuMTMsMCwwLDAsOC40MiwxNS41NVoiLz48L3N2Zz4=);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+
+    /* Remove default */
+    -webkit-appearance: none;
+
+    /* Now your own custom styles */
+    height: 10px;
+    width: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 8px 8px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik0xLjEyODQ1IDEuMTI4NDVMMTAuODcxNSAxMC44NzE1TTEwLjg3MTUgMS4xMjg0NUwxLjEyODQ1IDEwLjg3MTUiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4NCjwvc3ZnPg0K)
+}
+
+#terminal_output {
+    display: none;
+    border: none;
+}
+
+#terminal_output:not(:empty){
+    display: block;
+    border: 1px solid #ccc;
+}
+
+#terminal_output p:not(:empty){
+    display: block;
+}
+
+
+#terminal_output p {
+    margin-top: 0.1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1rem;
+}
+
+progress {
+    -webkit-appearance: none;
+}
+
+progress#cme-progress {
+    border-radius: 0;
+    width: 100%;
+    height: 6px;
+}
+progress#cme-progress::-webkit-progress-bar {
+    border-radius: 0;
+    background-color: #ccc;
+}
+progress#cme-progress::-webkit-progress-value {
+    border-radius: 0;
+    background-color: #111;
+}
+progress#cme-progress::-moz-progress-bar {
+    border-radius: 0;
+    width: 100%;
+    height: 6px;
+}

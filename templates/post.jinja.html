@@ -1,0 +1,12 @@
+{% extends "base_document.html" %}
+{% block title %}{{post.title}}{% endblock %}
+{% block additional_scripts %}
+{% if post.scripts_html %}
+<<scripts>>
+{% endif %}
+{% endblock %}
+{% block content %}
+<article class="no-top-padding">
+        <<content>>
+</article>
+{% endblock %}

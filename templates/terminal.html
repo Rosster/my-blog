@@ -1,0 +1,6 @@
+<hr>
+<div class="terminal">
+    <input type="search" id="terminal_content" hx-get="/terminal" hx-trigger="keyup changed delay:500ms, search" name="query" hx-target="#terminal_output" hx-swap="innerHTML show:window:bottom">
+    <input type="button" title="search" id="search_button" class="" value="⏎" hx-get="/terminal" hx-include="#terminal_content" hx-target="#terminal_output" hx-swap="innerHTML show:window:bottom">
+</div>
+<div id="terminal_output" class="terminal"></div>

@@ -1,0 +1,11 @@
+<div>
+    <a href="/posts/{{result.immutable_title}}"><span>{{ loop_index }}. </span><span>{{ (result.title_snippet if result.title_match else result.title)| safe}}</span></a>
+</div>
+<div>
+    <span>{{ result.formatted_date }} </span><span>|</span><span>{{ (result.keywords_snippet if result.keywords_match else result.keywords)| safe}}</span>
+</div>
+{% if result.text_match %}
+<div>
+    <span>{{ (result.text_snippet)| safe}}</span>
+</div>
+{% endif %}

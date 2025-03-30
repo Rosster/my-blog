@@ -1,0 +1,7 @@
+<label for="art-{{ id }}" class="margin-toggle">⌬</label>
+<input type="checkbox" id="art-{{ id }}" class="margin-toggle">
+<span class="marginnote">{{ attribution or secondary_attribution  }},
+<em>{{ title }}</em>,
+{{ raw_creation_date or "Unknown Date"}}.
+</span>
+<img src="{{ smallest_image_url }}" alt="{{ title_quoted }}, {{ attribution_quoted or secondary_attribution_quoted }}"  onclick="document.getElementById('art-{{ id }}').click()">

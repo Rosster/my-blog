@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}RPSK{% endblock %}</title>
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+
+
+    <script src="{{ url_for('static', path='/base_scripts.js') }}"></script>
+    {% block additional_scripts %}
+
+    {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', path='/tufte.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/rpsk-styles.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', path='/favicon.ico') }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+{#Macro Section#}
+{%- macro preview_section() %}
+<preview>
+    <section>
+            <p>
+                {{ caller() }}
+            </p>
+    </section>
+</preview>
+{%- endmacro -%}
+
+{%- macro numbered_sidenote(label) -%}
+<label for="{{ label }}" class="margin-toggle sidenote-number"></label>
+<input type="checkbox" id="{{ label }}" class="margin-toggle">
+    <span class="sidenote">
+{{ caller() }}
+    </span>
+{%- endmacro -%}
+
+{%- macro marginnote(label) -%}
+<label for="{{ label }}" class="margin-toggle">⌬</label>
+<input type="checkbox" id="{{ label }}" class="margin-toggle">
+<span class="marginnote">
+{{ caller() }}
+</span>
+{%- endmacro -%}
+
+{#End of Macro Section#}
+<body>
+    <section>
+        <p class="subtitle"><a href="/" class="no-tufte-underline">Ross P. Sullivan Kelly</a>
+            {% call marginnote("mn-who-am-i") %}
+            I'm a data scientist, I was a chemist for a while before that. I love (and do most of my work in) python, although lately more SQL. My pronouns are he/him. If you want to <a href="#terminal_content">search</a>, be my guest!
+            {% endcall %}
+        </p>
+    </section>
+    {% block content %}
+
+    {% endblock %}
+    {% block terminal %}
+        {% include 'terminal.html' %}
+    {% endblock %}
+</body>
+
+</html>
+

@@ -1,0 +1,10 @@
+{% for result in results %}
+{% with %}
+    {% set loop_index = loop.index %}
+    {% if result %}
+    <p>{% include 'terminal_search_result.jinja.html' %}</p>
+    {% endif %}
+{% endwith %}
+
+
+{% endfor %}
