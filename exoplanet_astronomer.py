@@ -8,7 +8,6 @@ from sqlmodel import Field, SQLModel, text, Session, select, desc, func
 from sqlalchemy.engine.base import Engine
 from asyncer import asyncify
 from utils import fetch
-import atproto
 
 ####################
 # Model Definition #
@@ -251,16 +250,17 @@ async def update_exoplanets_with_min_date(engine: Engine, min_date: datetime|Non
         await asyncify(merge_exoplanets)(planet_data=planets, engine=engine)
         
 def post_system(system: list[ExoPlanet]) -> None:
+    from atproto import Client, client_utils  # We do this because it's a massive module
     
     if system:
         system_render = render_system(system)
         system_exoplanet_archive_link = f"https://exoplanetarchive.ipac.caltech.edu/overview/{system[0].host_name}"
-        client = atproto.Client()
+        client = Client()
         client.login(
             os.environ.get('EXOPLANET_ACCOUNT_NAME'),
             os.environ.get('EXOPLANET_ACCOUNT_KEY')
         )
-        post = atproto.client_utils.TextBuilder().link(
+        post = client_utils.TextBuilder().link(
             system[0].host_name, system_exoplanet_archive_link
         ).text('\n'+system_render)
         client.send_post(post)
