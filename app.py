@@ -37,7 +37,7 @@ from exoplanet_astronomer import ExoPlanet, get_all_system_names, get_system, up
 async def lifespan(_: FastAPI) -> AsyncIterator[None]:
     FastAPICache.init(InMemoryBackend())
     scheduler = AsyncIOScheduler()
-    # scheduler.add_job(post_new_exoplanet_system, trigger="interval", hours=6, kwargs={'engine': engine})
+    scheduler.add_job(post_new_exoplanet_system, trigger="interval", hours=6, kwargs={'engine': engine})
     scheduler.start()
 
     repeated_query_attempts()(SQLModel.metadata.create_all)(engine)
