@@ -160,7 +160,7 @@ async def all_posts() -> list[Post]:
 @cache(expire=60*60*24)
 async def met_object_search(art_type: str = Query(None, max_length=200, pattern="^[a-z]+$")) -> list[int]:
     uri = f"https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q={quote_plus(art_type)}"
-    results = await fetch(uri)
+    results = await fetch(uri, headers = {'user-agent': 'sullivankelly_blog'})
     if type(results) is not dict:
         raise BadRequestResponseError(f"Expected dict, got {results}")
 
@@ -170,7 +170,7 @@ async def met_object_search(art_type: str = Query(None, max_length=200, pattern=
 @cache(expire=60*60*24)
 async def met_object(object_id: int) -> dict[str, Any]:
     uri = f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{object_id}"
-    results = await fetch(uri)
+    results = await fetch(uri, headers = {'user-agent': 'sullivankelly_blog'})
     if type(results) is not dict:
         raise BadRequestResponseError(f"Expected dict, got {results}")
 
@@ -208,7 +208,7 @@ async def random_met_object(art_type:str|None = Query(None, max_length=200, patt
 @cache(expire=60*60*24)
 async def nasa_image_search(search_term: str = Query(None, max_length=200, pattern="^[a-z]+$")) -> list[dict]:
     uri = f"https://images-api.nasa.gov/search?q={quote_plus(search_term)}"
-    results = await fetch(uri)
+    results = await fetch(uri, headers = {'user-agent': 'sullivankelly_blog'})
 
     match results:
         case {"collection": {"items": list(items)}}:
@@ -249,7 +249,8 @@ async def incoming_asteroids(n_days_from_now: int = 6) -> list[dict]:
                 "https://api.nasa.gov/neo/rest/v1/feed",
                 params={'api_key': os.environ['NASA_API_KEY'],
                         'start_date': start_date.strftime('%Y-%m-%d'),
-                        'end_date': end_date.strftime('%Y-%m-%d')}
+                        'end_date': end_date.strftime('%Y-%m-%d')},
+                headers = {'user-agent': 'sullivankelly_blog'}
             )
     if type(req) is not dict:
         raise BadRequestResponseError(f"Expected dict, got {req}")
